@@ -42,18 +42,20 @@ class Ads(models.Model):
 
   title = models.CharField(max_length=100)
   seller  = models.ForeignKey(User, on_delete=models.DO_NOTHING,default=User)
-  city = models.CharField(max_length=50)
+  location = models.CharField(max_length=50)
   region = models.CharField(max_length=200, null=True,choices=Region)
   category = models.CharField(max_length=200, null=True,choices=Category)
   price = models.IntegerField()
   brand = models.CharField(max_length=200,null=True)
   published = models.BooleanField(default=False)
   negotiable = models.BooleanField(default=False)
+  used  = models.BooleanField(default=False)
   main_photo = models.ImageField(upload_to='photos/%Y/%m/%d/')
   photo_1 = models.ImageField(upload_to='photos/%Y/%m/%d',blank=True)
   photo_2 = models.ImageField(upload_to='photos/%Y/%m/%d',blank=True)
   photo_3 = models.ImageField(upload_to='photos/%Y/%m/%d',blank=True)
   photo_4 = models.ImageField(upload_to='photos/%Y/%m/%d',blank=True)
+  description = models.TextField(null=True)
   date_posted = models.DateField(default=datetime.now,blank=True)
 
 
