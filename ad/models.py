@@ -41,7 +41,7 @@ class Ads(models.Model):
   )
 
   title = models.CharField(max_length=100)
-  seller  = models.ForeignKey(User, on_delete=models.DO_NOTHING,default=User.username)
+  seller  = models.ForeignKey(User, on_delete=models.DO_NOTHING,default=User)
   city = models.CharField(max_length=50)
   region = models.CharField(max_length=200, null=True,choices=Region)
   category = models.CharField(max_length=200, null=True,choices=Category)
@@ -54,6 +54,7 @@ class Ads(models.Model):
   photo_2 = models.ImageField(upload_to='photos/%Y/%m/%d',blank=True)
   photo_3 = models.ImageField(upload_to='photos/%Y/%m/%d',blank=True)
   photo_4 = models.ImageField(upload_to='photos/%Y/%m/%d',blank=True)
+  date_posted = models.DateField(default=datetime.now,blank=True)
 
 
   def __str__(self):
