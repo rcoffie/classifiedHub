@@ -5,4 +5,4 @@ from django.shortcuts import render,redirect
 
 
 def ads(request):
-  return render(request,'ads/ads.html')
+  return render(request,'ads/shop.html')
