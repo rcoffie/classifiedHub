@@ -7,6 +7,9 @@ from django.contrib.auth import logout
 # Create your views here.
 
 def login(request):
+  if request.method == 'POST':
+    messages.error(request,'testing messages')
+    return redirect('login')
   return render(request,'account/login.html')
 
 
