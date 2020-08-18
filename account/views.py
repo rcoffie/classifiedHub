@@ -56,3 +56,10 @@ def register(request):
 
 def dashboard(request):
     return render(request,'account/dashboard.html')
+
+
+
+
+def logout(request):
+  logout(request)
+  return redirect('index')
