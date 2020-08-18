@@ -8,8 +8,17 @@ from django.contrib.auth import logout
 
 def login(request):
   if request.method == 'POST':
-    messages.error(request,'testing messages')
-    return redirect('login')
+    username = request.POST['username']
+    password = request.POST['password']
+    user = auth.authenticate(username=username,password=password)
+    if user is not None:
+      auth.login(request,user)
+      messages.success(request,'login successfully')
+      return redirect('dashboard')
+    else:
+      messages.error(request,'password or username error')
+      return redirect('login')
+
   return render(request,'account/login.html')
 
 
@@ -42,3 +51,8 @@ def register(request):
       
 
   return render(request,'account/registration.html')
+
+
+
+def dashboard(request):
+    return render(request,'account/dashboard.html')
